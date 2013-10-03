@@ -11,6 +11,7 @@ require 'rubygems'
 require 'uri'
 require 'pathname'
 
+require 'pg'
 require 'active_record'
 require 'logger'
 require 'oauth2'
@@ -23,10 +24,13 @@ require "sinatra/reloader" if development?
 
 require 'erb'
 
+
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
 APP_NAME = APP_ROOT.basename.to_s
+
+require APP_ROOT.join('config', 'database')
 
 # Set up the controllers and helpers
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
