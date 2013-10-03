@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'pg'
+
 # Sinatra driver
 gem 'sinatra'
 gem 'sinatra-contrib'
@@ -16,7 +18,7 @@ gem 'shotgun'
 gem 'oauth2', '~>0.8.0'
 gem 'omniauth'
 gem 'omniauth-oauth2'
-gem 'omniauth-dbc', :git => 'https://github.com/socrates-api/omniauth-dbc.git'
+gem 'omniauth-dbc'
 gem 'json'
 
 group :test do
