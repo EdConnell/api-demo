@@ -19,6 +19,7 @@ gem 'oauth2', '~>0.8.0'
 gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'omniauth-dbc'
+gem 'dbc-ruby'
 gem 'json'
 
 group :test do
