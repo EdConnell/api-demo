@@ -1,11 +1,7 @@
-# Devbootcamp Auth Demo App
-This is a skeleton app using authorization through [Devbootcamp Auth](https://auth.devbootcamp.com).
-To use it you'll need to get a client id and secret from Devbootcamp Auth.
+# Devbootcamp Flashcards
 
-## Configuration
-You must add your client id, secret, and redirect url as environment variables.
-```ruby
-ENV['OAUTH_TOKEN'] = # your token
-ENV['OAUTH_SECRET'] = # your secret
-ENV['OAUTH_REDIRECT'] = # your redirect url
-```
+A fun way to learn the names of your fellow boots at DBC
+
+## Use
+
+Users log in through Socrates and match pictures of their cohort-mates with their names.
