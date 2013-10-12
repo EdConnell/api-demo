@@ -1,5 +1,6 @@
 class Cohort < ActiveRecord::Base
   has_many :users
+  has_many :games
 
   def self.find_or_create_cohort_by_socrates_id(id)
     cohort = self.find_by_socrates_id(id)
