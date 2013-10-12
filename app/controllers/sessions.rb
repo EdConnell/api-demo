@@ -1,9 +1,5 @@
 enable :sessions
 
-use OmniAuth::Builder do
-  provider :dbc, ENV['OAUTH_CLIENT_ID'], ENV['OAUTH_CLIENT_SECRET']
-end
-
 get '/sign_in' do
   redirect to ('/auth/dbc')
 end
