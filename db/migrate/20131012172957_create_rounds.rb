@@ -4,5 +4,6 @@ class CreateRounds < ActiveRecord::Migration
       t.integer :user_id
       t.integer :game_id
       t.integer :score, default: 0
+    end
   end
 end
