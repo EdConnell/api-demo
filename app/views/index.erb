@@ -1,6 +1,8 @@
-<% if authenticated? %>
-<p>Hello <%=current_user.name%>!</p>
-<a href='/sign_out'>Sign Out</a>
-<% else %>
-<a href='/sign_in'>Sign In</a>
-<% end %>
+<div class="container">
+  <% if authenticated? %>
+    <p>Are you ready to play?</p>
+    <a href="/play">Game on!</a>
+  <% else %>
+    <p>Please log in to play!</p>
+  <% end %>
+</div>

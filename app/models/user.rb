@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def self.gravatar_url_from_email(email)
-    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?size=300"
+    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}"
   end
 
   def update_cohort_id(current_socrates_id)

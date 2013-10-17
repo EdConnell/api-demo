@@ -15,11 +15,21 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Name that boot!</title>
 </head>
 <body>
-  <div class='container'>
-    <%= yield %>
-  </div>
+  <nav>
+    <div id="logo">
+      <a href="/">Name that boot!</a>
+    </div>
+    <div id="userbox">
+      <% if authenticated? %>
+       <img src="<%= gravatar_icon %>"> Welcome <%= current_user.name %> | <a href="/sign_out" >Logout</a>
+      <% else %>
+        <a href="/sign_in" >Login</a> | <a href="/register" >Register</a>
+      <% end %>
+    </div>
+  </nav>
+  <%= yield %>
 </body>
 </html>
