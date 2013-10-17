@@ -1,8 +1,32 @@
 .container {
   margin: 20px auto;
-  width: 800px;
+  width: 700px;
   padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+
 }
 th {
   text-align: left;
+}
+nav {
+  width: 100%;
+  background-color: #527578;
+}
+#logo {
+  font-size: 24px;
+  color: white;
+  padding: 20px;
+  display: inline-block;
+}
+#userbox {
+  float: right;
+  color: white;
+  padding: 20px;
+}
+#userbox a, #logo a{
+  color: white;
+  text-decoration: none;
+}
+#userbox a:hover, #logo a:hover{
+  color: #B3B1B2;
 }
