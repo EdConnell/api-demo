@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
       old_cohort.update_student_roster
     end
   end
+
+  def is_this_your_name?(name)
+    name == self.name
+  end
 end
