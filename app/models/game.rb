@@ -1,10 +1,9 @@
 class Game < ActiveRecord::Base
   belongs_to :cohort
-  has_many :rounds
-  has_many :users, through: :rounds
+  belongs_to :user
 
   def cards
-    cohort.users.shuffle(random: Random.new(self.id))
+    cohort.users.shuffle(random: Random.new(self.id)).delete_if {|card| card.name == user.name}
   end
 
   def next_card(last_card = -1)
@@ -18,5 +17,13 @@ class Game < ActiveRecord::Base
 
   def check_correctness(card_id, name)
     User.find(card_id).is_this_your_name?(name)
+  end
+
+  def first_card
+    next_card
+  end
+
+  def is_correct?(card_id, guess)
+    check_correctness(card_id, guess)
   end
 end

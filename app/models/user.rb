@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :cohort
-  has_many :rounds
-  has_many :games, through: :rounds
+  has_many :games
 
   def self.create_or_find_user_from_oauth(oauth_hash)
     user = self.find_by_name(oauth_hash.name)
