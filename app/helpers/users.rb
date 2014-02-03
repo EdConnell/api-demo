@@ -14,4 +14,12 @@ helpers do
   def gravatar_img
    # "#{(person_to_guess?).gravatar_url}?size=300" Will be used for main picture for guessing
   end
+
+  def has_game_in_session?
+    current_user.has_unfinished_game?
+  end
+
+  def last_game_id
+    current_user.last_game.id
+  end
 end

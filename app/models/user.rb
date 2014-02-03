@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :cohort
-  has_many :games
+  has_many :games, order: "created_at DESC"
 
   def self.create_or_find_user_from_oauth(oauth_hash)
     user = self.find_by_name(oauth_hash.name)
@@ -35,5 +35,13 @@ class User < ActiveRecord::Base
 
   def is_this_your_name?(name)
     name == self.name
+  end
+
+  def last_game
+    self.games.first
+  end
+
+  def has_unfinished_game?
+    !(self.last_game.is_finished?)
   end
 end

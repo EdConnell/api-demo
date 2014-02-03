@@ -26,4 +26,8 @@ class Game < ActiveRecord::Base
   def is_correct?(card_id, guess)
     check_correctness(card_id, guess)
   end
+
+  def is_finished?
+    cards_played == total_cards
+  end
 end
