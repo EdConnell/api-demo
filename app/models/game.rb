@@ -25,12 +25,17 @@ class Game < ActiveRecord::Base
     User.find(card_id).is_this_your_name?(name)
   end
 
-  def is_guess_correct?(guess)
-    check_correctness(next_card.id, guess)
-  end
-
   def is_finished?
     cards_played >= total_cards - 1
+  end
+
+  def set_number_of_cards!
+    number_of_cards = self.cohort.studen_count
+    if self.user.is_student? && self.cohort == self.user.cohort
+      number_of_cards -= 1
+    end
+    self.total_cards = number_of_cards
+    self.save
   end
 
   def random_names

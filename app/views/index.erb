@@ -8,7 +8,14 @@
       <a href="/play/<%= last_game_id %>">Finish game</a>
     <% end %>
     <p>Are you ready to play?</p>
-    <a href="/play">New Game</a>
+    <form>
+      <select name="cohort">
+        <option value="<%= users_cohort.id %>"><%= users_cohort.name %></option>
+        <% @cohorts.each do |cohort| %>
+          <option value="<%= cohort.id %>"><%= cohort.name %></option>
+        <% end %>
+      </select>
+    </form>
   <% else %>
     <p>Please log in to play!</p>
   <% end %>

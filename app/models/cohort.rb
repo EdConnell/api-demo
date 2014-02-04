@@ -39,6 +39,6 @@ class Cohort < ActiveRecord::Base
   end
 
   def student_count
-    self.users.count
+    self.users.where(role: "student")
   end
 end

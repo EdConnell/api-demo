@@ -6,11 +6,13 @@ class User < ActiveRecord::Base
     user = self.find_by_name(oauth_hash.name)
     cohort_id = get_cohort_id(oauth_hash.id)
     unless user
+      role_type = assess_role(oauth_hash.roles)
       gravatar = gravatar_url_from_email(oauth_hash.email)
       cohort = Cohort.find_or_create_cohort_by_socrates_id(cohort_id)
       user = self.create(name: oauth_hash.name,
                          gravatar_url: gravatar,
-                         cohort_id: cohort.id)
+                         cohort_id: cohort.id,
+                         role: role_type)
     end
     user.update_cohort_id(cohort_id)
     user
@@ -22,6 +24,15 @@ class User < ActiveRecord::Base
 
   def self.gravatar_url_from_email(email)
     "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}"
+  end
+
+  def assess_role(roles)
+    intersection_of_roles = ["admin", "editor"] & roles
+    if intersection_of_roles >= 1
+      "admin"
+    else
+      "student"
+    end
   end
 
   def update_cohort_id(current_socrates_id)
@@ -47,5 +58,9 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def is_student?
+    self.role == "student"
   end
 end
