@@ -9,7 +9,11 @@
     <% end %>
     <p>Are you ready to play?</p>
     <form>
-      <select>
+      <select name="cohort">
+        <option value="<%= users_cohort.id %>"><%= users_cohort.name %></option>
+        <% @cohorts.each do |cohort| %>
+          <option value="<%= cohort.id %>"><%= cohort.name %></option>
+        <% end %>
       </select>
     </form>
   <% else %>
