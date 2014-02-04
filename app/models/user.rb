@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
   end
 
   def has_unfinished_game?
-    !(self.last_game.is_finished?)
+    if games.length > 0
+      !self.last_game.is_finished?
+    else
+      false
+    end
   end
 end
