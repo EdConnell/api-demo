@@ -25,10 +25,6 @@ class Game < ActiveRecord::Base
     User.find(card_id).is_this_your_name?(name)
   end
 
-  def is_guess_correct?(guess)
-    check_correctness(next_card.id, guess)
-  end
-
   def is_finished?
     cards_played >= total_cards - 1
   end
