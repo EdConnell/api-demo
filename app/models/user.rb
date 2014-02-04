@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :cohort
-  has_many :rounds
-  has_many :games, through: :rounds
+  has_many :games, order: "created_at DESC"
 
   def self.create_or_find_user_from_oauth(oauth_hash)
     user = self.find_by_name(oauth_hash.name)
@@ -31,6 +30,22 @@ class User < ActiveRecord::Base
       self.cohort = Cohort.find_or_create_cohort_by_socrates_id(current_socrates_id)
       self.cohort.update_student_roster
       old_cohort.update_student_roster
+    end
+  end
+
+  def is_this_your_name?(name)
+    name == self.name
+  end
+
+  def last_game
+    self.games.first
+  end
+
+  def has_unfinished_game?
+    if games.length > 0
+      !self.last_game.is_finished?
+    else
+      false
     end
   end
 end

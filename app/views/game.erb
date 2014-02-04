@@ -1,0 +1,11 @@
+<img src="<%= gravatar_img %>">
+<form action="/play/<%= @game.id %>" method="POST">
+  <% @names.each do |name| %>
+    <div class="guessbox">
+      <input type="radio" name="guess" value="<%= name %>"><%= name %>
+    </div>
+  <% end %>
+  <input type="submit" value="Name That Boot!">
+</form>
+
+<p>Score: <%= @game.score %></p>

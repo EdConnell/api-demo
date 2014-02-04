@@ -1,8 +1,18 @@
 <div class="container">
+  <% if @error %>
+  <p class="error"><%= @error %></p>
+  <% end %>
   <% if authenticated? %>
+    <% if has_game_in_session? %>
+      <p>Want to finish your last game?</p>
+      <a href="/play/<%= last_game_id %>">Finish game</a>
+    <% end %>
     <p>Are you ready to play?</p>
-    <a href="/play">Game on!</a>
+    <a href="/play">New Game</a>
   <% else %>
     <p>Please log in to play!</p>
+  <% end %>
+  <% if @game %>
+    <p>You've finished your game with a grand total score of <%= @game.score %>!</p>
   <% end %>
 </div>
