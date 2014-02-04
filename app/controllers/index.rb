@@ -5,7 +5,8 @@ end
 get '/play' do
   if current_user
     @cohort = current_user.cohort
-    @game = Game.create(cohort_id: @cohort.id, user_id: current_user.id, total_cards: @cohort.student_count - 1)
+    @game = Game.create(cohort_id: @cohort.id, user_id: current_user.id)
+    @game.set_number_of_cards!
     redirect "/play/#{@game.id}"
   else
     @error = "Error:  You must first log in before you can play."

@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :cohort_id
       t.string  :name
       t.string  :gravatar_url
+      t.string  :role
     end
   end
 end
